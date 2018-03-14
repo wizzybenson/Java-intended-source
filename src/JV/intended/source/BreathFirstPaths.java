@@ -6,7 +6,6 @@
 package JV.intended.source;
 
 import java.util.LinkedList;
-import java.util.Queue;
 import java.util.Stack;
 
 /**
@@ -41,18 +40,18 @@ public class BreathFirstPaths {
     public void bfs(Graph_DS graph,int vertex)
     {
         marked[vertex] = true;
-        Queue<Integer> queue = new LinkedList<Integer>();//To help process vertices in FIFO fashion.
+        LinkedList<Integer> queue = new LinkedList();//To help process vertices in FIFO fashion.
         queue.add(vertex);
         while(!(queue.isEmpty()))
         {
-            int v = queue.remove();
+            int v = queue.removeFirst();
             for(int w:graph.adj(v))
             {
                 if(!marked[w])
                 {
                     edgeTo[w] = v;
                     marked[w]=true;
-                    queue.add(w);
+                    queue.addLast(w);
                 }
             }
         }
